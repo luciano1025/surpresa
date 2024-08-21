@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa para ELIZNA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            overflow-x: hidden;
+            background-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative; /* Adiciona posição relativa para o posicionamento fixo do copyright */
+        }
+
+        #mainContent {
+            display: none; /* Oculta o conteúdo principal inicialmente */
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px;
+            color: rgb(255, 255, 255);
+            border-radius: 35px;
+        }
+
+        h2 {
+            margin-top: 25vh;
+            padding: 20px;
+            background-color: crimson;
+            color: aliceblue;
+            border-radius: 50%;
+        }
+
+        .botao {
+            display: flex;
+            justify-content: center; /* Centraliza os botões horizontalmente */
+            align-items: center;
+            gap: 20px; /* Espaçamento entre os botões */
+            margin-top: 20px;
+        }
+
+        #si {
+            background-color: chartreuse;
+        }
+
+        #no {
+            background-color: red;
+            color: aliceblue;
+        }
+
+        button {
+            height: 40px;
+            width: 100px;
+            background: white;
+            color: black;
+            font-weight: 600;
+            border-radius: 5px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        #videoPopup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+        }
+
+        #videoPopup video {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        /* Estilo para a mensagem */
+        #message {
+            display: none; /* Oculta a mensagem inicialmente */
+            margin-top: 20px;
+            padding: 20px;
+            background-color: green;
+            color: white;
+            border-radius: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Estilo para o copyright fixo e centralizado */
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: black;
+            color: aliceblue;
+            padding: 10px 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="videoPopup">
+        <video id="introVideo" controls>
+            <source src="video/pedido_sincero.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+
+    <div id="mainContent">
+        <header>
+            <h1>Se Eu te fizesse essa pergunta na sua frente hoje...</h1>
+        </header>
+        <h2>Aceita namorar comigo Elizna??</h2>
+        <div class="botao">
+            <button id="si">Sim</button>
+            <button id="no">Não</button>
+        </div>
+        <div id="message">Eu sabia que você aceitaria! 💖, isso pra mim é como se tivesse feito um gol mais impossível da minha vida, queria ter pedido antes, mas aconteceram muitas coisas que te contarei um dia, e saiba que eu viajaria pra qualquer lugar que tu estivesse, e quero colocar VOCÊ em meus planos pra essa vida!!!</div>
+    </div>
+
+    <!-- Adicionando o áudio -->
+    <audio id="yesAudio" src="audio/Áudio do WhatsApp de 2024-08-21 à(s) 17.44.03_b015387e.dat.unknown" preload="auto"></audio>
+
+    <!-- Rodapé fixo e centralizado -->
+    <div id="footer">&copy; Criado por Luciano Ribeiro</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let videoPopup = document.getElementById('videoPopup');
+            let mainContent = document.getElementById('mainContent');
+            let introVideo = document.getElementById('introVideo');
+            let noButton = document.getElementById('no');
+            let siButton = document.getElementById('si');
+            let yesAudio = document.getElementById('yesAudio');
+            let message = document.getElementById('message');
+            let height = window.innerHeight - 100;
+            let width = window.innerWidth - 100;
+
+            introVideo.addEventListener('ended', function() {
+                videoPopup.style.display = 'none';
+                mainContent.style.display = 'block';
+            });
+
+            noButton.addEventListener('mouseover', function(){
+                noButton.style.position = "absolute";
+                noButton.style.top = Math.random() * height + "px";
+                noButton.style.left = Math.random() * width + "px";
+            });
+
+            siButton.addEventListener('click', function() {
+                yesAudio.play(); // Reproduz o áudio quando o botão "Sim" é clicado
+                message.style.display = 'block'; // Mostra a mensagem
+                noButton.style.display = 'none'; // Oculta o botão "Não"
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
